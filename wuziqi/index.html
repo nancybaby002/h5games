@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五子棋游戏</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>五子棋</h1>
+        <div class="game-container">
+            <div class="left-panel">
+                <div class="panel-content">
+                    <div id="mode-status">当前模式：双人对战</div>
+                    <button id="toggleAI" class="chinese-btn">切换为人机模式</button>
+                    <div class="rules-container">
+                        <h3>玩法说明</h3>
+                        <ul>
+                            <li>黑子先行，双方轮流落子</li>
+                            <li>五子连珠者获胜</li>
+                            <li>横竖斜皆可连成五子</li>
+                            <li>落子后不可悔棋</li>
+                        </ul>
+                        <div class="chinese-quote">
+                            <p>"棋到中盘步步营，</p>
+                            <p>密行疏处见功夫。"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-panel">
+                <div id="status">当前玩家: 黑子</div>
+                <canvas id="board" width="600" height="600"></canvas>
+            </div>
+            <div class="right-panel">
+                <div class="panel-content">
+                    <button id="restart" class="chinese-btn">重新开始</button>
+                    <div class="decoration">
+                        <div class="chinese-pattern"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>贪吃蛇大作战</h1>
+        <div class="game-stats">
+            <div class="score">分数: <span id="scoreValue">0</span></div>
+            <div class="level">关卡: <span id="levelValue">1</span></div>
+            <div class="speed">速度: <span id="speedValue">1</span></div>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+        <div class="game-controls">
+            <button id="startButton">开始游戏</button>
+            <button id="pauseButton">暂停</button>
+        </div>
+        <div class="game-info">
+            <p>使用方向键控制蛇的移动</p>
+            <p>每吃到10个食物升级一次</p>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</body>
+</html> 

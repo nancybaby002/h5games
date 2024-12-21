@@ -1,0 +1,435 @@
+/* 基础样式重置和深色主题变量 */
+:root {
+    --bg-dark: #1a1a1a;
+    --bg-darker: #141414;
+    --bg-light: #2a2a2a;
+    --text-primary: #00ff00;  /* 军事绿色 */
+    --text-secondary: #a0a0a0;
+    --accent-color: #3d5a45;  /* 军绿色 */
+    --danger-color: #8b0000;  /* 深红色 */
+    --border-color: #333333;
+    --cell-revealed: #1f2f1f;
+    --cell-unrevealed: #2f3f2f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0a0a0a;  /* 更暗的背景 */
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+    padding: 20px;
+}
+
+.page-container {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* 游戏容器样式 */
+.game-container {
+    background-color: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(5px);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    animation: flicker 0.15s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 游戏标题样式 */
+.game-title {
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+/* 游戏头部样式 */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-light);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* 计数器样式 */
+.mine-count, .timer {
+    background-color: var(--bg-darker);
+    color: var(--text-primary);
+    font-family: 'Digital', 'Courier New', monospace;
+    padding: 5px 10px;
+    border: 1px solid var(--text-primary);
+    text-shadow: 0 0 5px var(--text-primary);
+    border-radius: 3px;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* 游戏板样式 */
+.game-board {
+    display: grid;
+    gap: 1px;
+    background-color: var(--border-color);
+    border: 1px solid var(--border-color);
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.game-board.beginner {
+    grid-template-columns: repeat(9, 30px);
+}
+
+.game-board.intermediate {
+    grid-template-columns: repeat(16, 30px);
+}
+
+.game-board.expert {
+    grid-template-columns: repeat(30, 30px);
+}
+
+/* 格子样式 */
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: var(--cell-unrevealed);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-weight: bold;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cell.revealed {
+    background-color: var(--cell-revealed);
+}
+
+.cell:not(.revealed):hover {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 5px var(--text-primary);
+}
+
+.cell.mine {
+    background-color: var(--danger-color);
+}
+
+/* 添加高亮动画相关样式 */
+.cell.highlight {
+    animation: highlight 0.3s ease-in-out;
+    border-color: var(--text-primary);
+    box-shadow: 0 0 10px var(--text-primary);
+}
+
+@keyframes highlight {
+    0% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: scale(1.1);
+        filter: brightness(1.5);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+/* 修改已有的checking动画 */
+.cell.checking {
+    animation: checking 0.3s ease;
+    background-color: rgba(0, 255, 0, 0.2);
+    border-color: var(--text-primary);
+    box-shadow: 0 0 5px var(--text-primary);
+}
+
+@keyframes checking {
+    0% {
+        transform: scale(1);
+        background-color: var(--cell-unrevealed);
+    }
+    50% {
+        transform: scale(0.95);
+        background-color: rgba(0, 255, 0, 0.2);
+    }
+    100% {
+        transform: scale(1);
+        background-color: var(--cell-unrevealed);
+    }
+}
+
+/* 帮助区域样式 */
+.help-section {
+    background-color: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 350px;
+    flex-shrink: 0;
+}
+
+.help-section h2 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.help-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.help-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.help-card h3 {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--text-primary);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.help-card ul {
+    list-style-type: none;
+}
+
+.help-card li {
+    margin: 8px 0;
+    line-height: 1.4;
+    padding-left: 20px;
+    position: relative;
+}
+
+.help-card li::before {
+    content: ">";
+    color: var(--text-primary);
+    position: absolute;
+    left: 5px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1000px) {
+    .page-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .help-section {
+        max-width: none;
+        width: 100%;
+    }
+
+    .help-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+}
+
+/* 特效动画 */
+@keyframes scanline {
+    0% { background-position: 0 -100vh; }
+    100% { background-position: 0 100vh; }
+}
+
+@keyframes flicker {
+    0% { opacity: 0.97; }
+    5% { opacity: 0.95; }
+    10% { opacity: 0.97; }
+    15% { opacity: 0.94; }
+    20% { opacity: 0.98; }
+    25% { opacity: 0.95; }
+    30% { opacity: 0.97; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translate(0, 0) rotate(0); }
+    25% { transform: translate(-5px, -5px) rotate(-1deg); }
+    75% { transform: translate(5px, 5px) rotate(1deg); }
+}
+
+.game-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 255, 0, 0.02) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    animation: scanline 10s linear infinite;
+    z-index: 2;
+}
+
+.game-container.shake {
+    animation: shake 0.2s ease-in-out 3;
+}
+
+.page-container::before {
+    content: "☢";
+    position: fixed;
+    font-size: 400px;
+    color: rgba(0, 255, 0, 0.02);
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 按钮和选择器样式 */
+button#newGame {
+    background-color: var(--accent-color);
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+button#newGame:hover {
+    background-color: var(--text-primary);
+    color: var(--bg-darker);
+    box-shadow: 0 0 10px var(--text-primary);
+}
+
+select#difficulty {
+    background-color: var(--bg-darker);
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+select#difficulty:hover {
+    box-shadow: 0 0 10px var(--text-primary);
+}
+
+select#difficulty option {
+    background-color: var(--bg-darker);
+    color: var(--text-primary);
+}
+
+/* 在文件开头添加背景画布样式 */
+.battlefield-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* 在文件末尾添加 Toast 样式 */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.toast {
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--text-primary);
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: 1px solid var(--text-primary);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: toastIn 0.5s ease, flicker 0.15s infinite;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast.success {
+    border-color: #4CAF50;
+    text-shadow: 0 0 5px #4CAF50;
+}
+
+.toast.error {
+    border-color: #f44336;
+    text-shadow: 0 0 5px #f44336;
+}
+
+@keyframes toastIn {
+    from {
+        transform: translateY(-100%) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes toastOut {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%) scale(0.8);
+        opacity: 0;
+    }
+}
+ 

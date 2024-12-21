@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>蜘蛛纸牌</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <div class="header-left">
+                <div class="deck-container" id="deckContainer"></div>
+            </div>
+            <div class="header-center">
+                <div class="score-container">
+                    <div class="score">分数: <span id="score">0</span></div>
+                    <div class="moves">步数: <span id="moves">0</span></div>
+                    <div class="timer">时间: <span id="timer">00:00</span></div>
+                </div>
+                <div class="control-panel">
+                    <button id="newGame" class="control-btn">新游戏</button>
+                    <button id="hintBtn" class="control-btn">提示</button>
+                    <button id="settingsBtn" class="control-btn">设置</button>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="completed-piles" id="completedPiles"></div>
+            </div>
+        </div>
+        <div class="game-board" id="gameBoard"></div>
+        <div class="debug-panel">
+            <button id="testComplete" class="debug-btn">测试收牌</button>
+            <button id="testWin" class="debug-btn">测试胜利</button>
+            <button id="autoPlay" class="debug-btn">自动移动</button>
+        </div>
+    </div>
+
+    <!-- 设置弹窗 -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>游戏设置</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>难度设置</h3>
+                    <div class="difficulty-buttons">
+                        <button id="easyMode" class="difficulty-btn active">简单</button>
+                        <button id="mediumMode" class="difficulty-btn">中等</button>
+                        <button id="hardMode" class="difficulty-btn">困难</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/utils.js"></script>
+    <script src="js/Card.js"></script>
+    <script src="js/Deck.js"></script>
+    <script src="js/Game.js"></script>
+</body>
+</html> 

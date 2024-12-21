@@ -1,0 +1,208 @@
+:root {
+    --primary-color: #8B4513;
+    --secondary-color: #DEB887;
+    --text-color: #4A4A4A;
+    --border-color: #8B4513;
+    --panel-bg: #F5E6D3;
+}
+
+body {
+    background-color: #F9F0E6;
+    font-family: 'Noto Serif SC', serif;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><text x="10" y="40" font-family="serif" font-size="40" opacity="0.1">棋</text></svg>');
+    background-size: 60px 60px;
+}
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+h1::before, h1::after {
+    content: "●";
+    color: var(--primary-color);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.5em;
+}
+
+h1::before {
+    left: 30%;
+}
+
+h1::after {
+    right: 30%;
+}
+
+.game-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.left-panel, .right-panel {
+    width: 250px;
+    background: var(--panel-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(139, 69, 19, 0.1);
+    border: 2px solid var(--border-color);
+}
+
+.panel-content {
+    padding: 20px;
+}
+
+.center-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#board {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 15px rgba(139, 69, 19, 0.3);
+    border-radius: 4px;
+    border: 4px solid var(--border-color);
+}
+
+#mode-status {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.chinese-btn {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background: linear-gradient(145deg, #8B4513, #A0522D);
+    color: #FFF;
+    font-family: 'Noto Serif SC', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.chinese-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(139, 69, 19, 0.2);
+}
+
+.chinese-btn:active {
+    transform: translateY(0);
+}
+
+#status {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--text-color);
+    padding: 15px 30px;
+    border-radius: 4px;
+    background: var(--panel-bg);
+    border: 2px solid var(--border-color);
+    text-align: center;
+}
+
+.winner-status {
+    animation: pulse 1.5s infinite;
+    background: linear-gradient(45deg, #8B4513, #A0522D) !important;
+    color: white !important;
+}
+
+.rules-container {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.rules-container h3 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.rules-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.rules-container li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    color: var(--text-color);
+}
+
+.rules-container li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+.chinese-quote {
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+    color: var(--primary-color);
+    padding: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.chinese-quote p {
+    margin: 5px 0;
+}
+
+.decoration {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.chinese-pattern {
+    height: 100px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path d="M0,0 L40,40 M40,0 L0,40" stroke="%238B4513" stroke-width="1" opacity="0.2"/></svg>');
+    background-size: 20px 20px;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 1200px) {
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .left-panel, .right-panel {
+        width: 100%;
+        max-width: 600px;
+    }
+} 

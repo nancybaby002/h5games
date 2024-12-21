@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数独游戏</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>数独游戏</h1>
+        <div class="difficulty">
+            <select id="difficulty">
+                <option value="easy">简单</option>
+                <option value="medium">中等</option>
+                <option value="hard">困难</option>
+            </select>
+        </div>
+        <div class="timer">
+            用时：<span id="timer">00:00</span>
+            <button id="pauseBtn" class="icon-btn">
+                <span class="pause-icon">⏸</span>
+            </button>
+        </div>
+        <div class="best-time">最佳时间：<span id="bestTime">--:--</span></div>
+        <div id="board"></div>
+        <div id="numpad">
+            <button class="num-btn" data-num="1">1</button>
+            <button class="num-btn" data-num="2">2</button>
+            <button class="num-btn" data-num="3">3</button>
+            <button class="num-btn" data-num="4">4</button>
+            <button class="num-btn" data-num="5">5</button>
+            <button class="num-btn" data-num="6">6</button>
+            <button class="num-btn" data-num="7">7</button>
+            <button class="num-btn" data-num="8">8</button>
+            <button class="num-btn" data-num="9">9</button>
+            <button class="num-btn" data-num="0">清除</button>
+        </div>
+        <div class="controls">
+            <button id="newGame">新游戏</button>
+            <button id="check">检查</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

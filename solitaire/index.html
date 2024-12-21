@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纸牌接龙</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- 游戏标题 -->
+        <div class="game-title">
+            <h1>Solitaire</h1>
+            <div class="title-decoration">
+                <span class="card-symbol">♠</span>
+                <span class="card-symbol">♥</span>
+                <span class="card-symbol">♣</span>
+                <span class="card-symbol">♦</span>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <!-- 顶部区域：计分器和计时器 -->
+            <div class="game-header">
+                <div class="score">分数: <span id="score">0</span></div>
+                <div class="timer">时间: <span id="timer">0:00</span></div>
+                <div class="game-controls">
+                    <select id="game-mode" class="game-mode-select">
+                        <option value="3">标准模式 (翻三张)</option>
+                        <option value="1">简单模式 (翻一张)</option>
+                    </select>
+                    <button id="new-game">新游戏</button>
+                    <button id="preview-win" class="preview-button" title="预览胜利状态">🏆</button>
+                </div>
+            </div>
+
+            <!-- 游戏主区域 -->
+            <div class="game-area">
+                <!-- 顶部基础牌组和目标牌组 -->
+                <div class="top-row">
+                    <div class="deck-area">
+                        <div id="deck-0" class="card-pile deck"></div>
+                        <div id="waste-0" class="card-pile waste"></div>
+                    </div>
+                    <div class="foundation-piles">
+                        <div id="foundation-0" class="card-pile foundation"></div>
+                        <div id="foundation-1" class="card-pile foundation"></div>
+                        <div id="foundation-2" class="card-pile foundation"></div>
+                        <div id="foundation-3" class="card-pile foundation"></div>
+                    </div>
+                </div>
+
+                <!-- 底部七列牌组 -->
+                <div class="tableau">
+                    <div id="tableau-0" class="card-pile tableau-pile"></div>
+                    <div id="tableau-1" class="card-pile tableau-pile"></div>
+                    <div id="tableau-2" class="card-pile tableau-pile"></div>
+                    <div id="tableau-3" class="card-pile tableau-pile"></div>
+                    <div id="tableau-4" class="card-pile tableau-pile"></div>
+                    <div id="tableau-5" class="card-pile tableau-pile"></div>
+                    <div id="tableau-6" class="card-pile tableau-pile"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏说明 -->
+        <div class="game-instructions">
+            <h2>游戏玩法</h2>
+            <div class="instructions-content">
+                <div class="instruction-section">
+                    <h3>基本操作</h3>
+                    <ul>
+                        <li>点击左上角牌堆翻开三张新牌</li>
+                        <li>拖拽卡片到合法位置</li>
+                        <li>双击卡片自动移动到基础牌堆</li>
+                    </ul>
+                </div>
+                <div class="instruction-section">
+                    <h3>快捷键</h3>
+                    <ul>
+                        <li><kbd>Ctrl</kbd> + <kbd>Z</kbd> 撤销上一步</li>
+                        <li><kbd>双击</kbd> 自动移动到基础牌堆</li>
+                    </ul>
+                </div>
+                <div class="instruction-section">
+                    <h3>计分规则</h3>
+                    <ul>
+                        <li>移动到基础牌堆: +10分</li>
+                        <li>翻开新卡片: +5分</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fireworks-container"></div>
+    <div class="victory-message">
+        <h2>🎉 恭喜胜利！ 🎉</h2>
+        <p>分数：<span class="victory-score"></span></p>
+        <p>用时：<span class="victory-time"></span></p>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 

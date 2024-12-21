@@ -1,0 +1,331 @@
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.difficulty {
+    margin-bottom: 20px;
+}
+
+#difficulty {
+    padding: 8px 15px;
+    font-size: 16px;
+    border: 2px solid #2196f3;
+    border-radius: 6px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    min-width: 120px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232196f3'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 20px;
+    padding-right: 32px;
+}
+
+#difficulty:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+}
+
+#difficulty option {
+    padding: 8px;
+    font-size: 16px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0;
+    background-color: #999;
+    border: 2px solid #333;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1;
+}
+
+.cell {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    background-color: white;
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+    border-left: none;
+    border-top: none;
+    text-align: center;
+    font-size: min(20px, 4vw);
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+.cell:focus {
+    background-color: #e3f2fd;
+    outline: none;
+}
+
+.cell::-webkit-inner-spin-button,
+.cell::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.cell:nth-child(9n) {
+    border-right: none;
+}
+
+.cell:nth-child(n+73):nth-child(-n+81) {
+    border-bottom: none;
+}
+
+.cell:nth-child(3n):not(:nth-child(9n)) {
+    border-right: 2px solid #333;
+}
+
+.cell:nth-child(n+19):nth-child(-n+27),
+.cell:nth-child(n+46):nth-child(-n+54) {
+    border-bottom: 2px solid #333;
+}
+
+.initial {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.error {
+    background-color: #ffebee;
+}
+
+#numpad {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 450px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.num-btn {
+    aspect-ratio: 1.5;
+    font-size: min(24px, 5vw);
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    color: #333;
+    font-weight: 500;
+    padding: 0;
+}
+
+.num-btn:hover {
+    background-color: #e9ecef;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.num-btn:active {
+    background-color: #dee2e6;
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.num-btn[data-num="0"] {
+    grid-column: span 2;
+    aspect-ratio: 3;
+    background-color: #e9ecef;
+    color: #666;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #2196f3;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1976d2;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 5px;
+    }
+    
+    #board {
+        margin: 10px auto;
+    }
+    
+    .cell {
+        font-size: min(16px, 4vw);
+    }
+    
+    #numpad {
+        max-width: 100%;
+    }
+    
+    .num-btn {
+        padding: min(12px, 2.5vw) 0;
+        font-size: min(16px, 3.5vw);
+    }
+    
+    .controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    button {
+        margin: 5px;
+        padding: 8px 15px;
+    }
+    
+    .difficulty {
+        width: 100%;
+    }
+    
+    #difficulty {
+        width: 140px;
+        padding: 8px 30px 8px 12px;
+        font-size: 15px;
+        background-size: 16px;
+        background-position: right 8px center;
+    }
+    
+    #numpad {
+        gap: 5px;
+        margin: 15px auto;
+    }
+    
+    .num-btn {
+
+        border-radius: 6px;
+    }
+}
+
+@media (max-width: 360px) {
+    #numpad {
+        gap: 4px;
+    }
+    
+    .num-btn {
+        aspect-ratio: 1.1;
+        font-size: min(18px, 4vw);
+    }
+    
+    .num-btn[data-num="0"] {
+        aspect-ratio: 2.2;
+    }
+}
+
+.cell.selected {
+    background-color: #e3f2fd;
+    box-shadow: inset 0 0 0 2px #2196f3;
+}
+
+.cell.same-number {
+    background-color: #e8f5e9;
+}
+
+.cell.same-number.selected {
+    background-color: #e3f2fd;
+}
+
+.cell.initial.same-number {
+    background-color: #c8e6c9;
+}
+
+.timer {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#timer {
+    font-family: monospace;
+    font-weight: bold;
+    color: #2196f3;
+    min-width: 50px;
+    display: inline-block;
+}
+
+.timer.paused #timer {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.5; }
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    padding: 2px 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    transition: all 0.2s;
+}
+
+.icon-btn:hover {
+    color: #2196f3;
+    background-color: #e3f2fd;
+}
+
+.best-time {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+#bestTime {
+    font-family: monospace;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.timer.paused {
+    background-color: #fff3e0;
+}
